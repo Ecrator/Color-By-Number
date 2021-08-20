@@ -1,0 +1,4 @@
+Name: Test Canvas
+Progress: 0%
+TileData: 255,255,255@0,255,0@189,123,43@125,17,203@54,233,78@56,255,255@255,32,143#10,10#0,0/3/false%1,0/3/false%4,6/0/true%7,2/1/false
+                                    ^Colors                               Canvas Size^   ^Divider(#)  ^Tiles(coords, pallete#, filled)
