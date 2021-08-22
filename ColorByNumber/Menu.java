@@ -37,7 +37,7 @@ public class Menu extends JFrame implements MouseListener{
         //==========
         try{
             if(((JButton)e.getSource()).getText().equals("Browser")){
-                LevelBrowser browser98=new LevelBrowser();
+                LevelBrowser browser=new LevelBrowser();
                 this.setVisible(false);
             }else if(((JButton)e.getSource()).getText().equals("Creator")){
                 CanvasCreator creator=new CanvasCreator();
