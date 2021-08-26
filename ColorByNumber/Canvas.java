@@ -159,6 +159,8 @@ public class Canvas extends JFrame implements KeyListener{
             Magnify(true);
         }else if(key=='-'||key=='_'){
             Magnify(false);
+        }else if(key=='s'){
+            manager.saveCanvas(this);
         }
         //==========
     }
