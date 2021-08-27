@@ -13,6 +13,17 @@ public class BlankTile extends JPanel implements MouseListener{
         this.addMouseListener(this);
         //==========
     }
+
+    public BlankTile(BlankCanvas Icanvas, Color Icolor, int IpalleteNumber){
+        //initializes values and components
+        //==========
+        canvas=Icanvas;
+        color=Icolor;
+        palleteNumber=IpalleteNumber;
+        this.setBackground(color);
+        this.addMouseListener(this);
+        //==========
+    }
     @Override
     public void mouseClicked(MouseEvent e){}
     @Override

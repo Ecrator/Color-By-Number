@@ -11,12 +11,14 @@ public class BlankPallete extends JFrame implements MouseListener{
     JPanel previewColor;
     JButton addButton;
     JButton saveButton;
-    public BlankPallete(BlankCanvas Icanvas){
+    Boolean editMode;
+    public BlankPallete(BlankCanvas Icanvas, Boolean IeditMode){
         //initiates components
         //==========
         canvas=Icanvas;
         container=new JPanel();
         previewColor=new JPanel();
+        editMode=IeditMode;
         container.setBackground(Color.GRAY);
         container.setPreferredSize(new Dimension(800, 200));
         addButton=new JButton("Add");
@@ -92,6 +94,21 @@ public class BlankPallete extends JFrame implements MouseListener{
         //==========
     }
 
+    public void addColor(int r, int g, int b){
+        //adds a palleteColor object to the array
+        //and the container
+        //==========
+        Color Color=new Color(r, g, b);
+        colors.add(new PalleteColor(Color, this, colors.size()));
+        container.removeAll();
+        container.setLayout(new GridLayout((colors.size()/5)+1,colors.size(), 1, 1));
+        for(PalleteColor color: colors){
+            container.add(color);
+        }
+        container.revalidate();
+        //==========
+    }
+
     @Override
     public void mouseClicked(MouseEvent e){
         //adds a palleteColor object if the
@@ -103,14 +120,22 @@ public class BlankPallete extends JFrame implements MouseListener{
             }
         }catch(Exception x){}
         //==========
+        //creates a text file containing the canvas data
+        //or overwrites an existing file if in editMode
+        //==========
         try{
             if(((JButton)e.getSource()).getText().equals("Save")){
-                canvas.manager.createCanvas(canvas);
+                if(!editMode){
+                    canvas.manager.createCanvas(canvas);
+                }else{
+                    canvas.manager.overwriteCanvas(canvas);
+                }
                 this.setVisible(false);
                 canvas.setVisible(false);
                 Menu menu=new Menu();
             }
         }catch(Exception x){}
+        //==========
     }
     @Override
     public void mousePressed(MouseEvent e){}

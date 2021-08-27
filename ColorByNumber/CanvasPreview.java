@@ -6,13 +6,15 @@ public class CanvasPreview extends JPanel{
     DataManager manager;
     String data;
     int fileNumber;
+    Boolean completed;
     Tile[][] tiles;
     int[] canvasSize;
     TilePallete pallete;
-    public CanvasPreview(int IfileNumber) throws IOException{
+    public CanvasPreview(int IfileNumber, Boolean Icompleted) throws IOException{
         //Intializes values and components
         //==========
         fileNumber=IfileNumber;
+        completed=Icompleted;
         manager=new DataManager();
         data=manager.getData(fileNumber);
         pallete=new TilePallete(this);
@@ -49,7 +51,12 @@ public class CanvasPreview extends JPanel{
             for(String tile: splitTileData){
                 String[] data=tile.split("/");
                 int palleteNumber=Integer.valueOf(data[1]);
-                boolean filled=Boolean.valueOf(data[2]);
+                Boolean filled;
+                if(!completed){
+                    filled=Boolean.valueOf(data[2]);
+                }else{
+                    filled=true;
+                }
                 Color color=pallete.colors.get(Integer.valueOf(data[1])).color;
                 String[] coords=data[0].split(",");
                 tiles[Integer.valueOf(coords[0])][Integer.valueOf(coords[1])]=new Tile(palleteNumber, filled, color);
