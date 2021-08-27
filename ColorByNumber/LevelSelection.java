@@ -25,7 +25,7 @@ public class LevelSelection extends JPanel implements MouseListener{
         this.setBackground(Color.LIGHT_GRAY);
         this.setLayout(null);
         button.addMouseListener(this);
-        previewCanvas=new CanvasPreview(fileNumber);
+        previewCanvas=new CanvasPreview(fileNumber, false);
         //==========
         //Organizes components on the panel
         //==========
