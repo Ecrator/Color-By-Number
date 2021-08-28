@@ -56,8 +56,8 @@ public class Tile extends JPanel implements MouseListener{
             this.setBackground(color);
             this.remove(numberLabel);
         }
-        canvas.mouseDown=true;
         //===========
+        canvas.mouseDown=true;
     }
     @Override
     public void mouseReleased(MouseEvent e){
@@ -65,6 +65,9 @@ public class Tile extends JPanel implements MouseListener{
     }
     @Override
     public void mouseEntered(MouseEvent e){
+        //evaluates wether to fill the tile if
+        //the mouse stays down
+        //==========
         if(canvas.mouseDown){
             if(canvas.selectedPallete==palleteNumber&& !filled){
                 filled=true;
@@ -72,6 +75,7 @@ public class Tile extends JPanel implements MouseListener{
                 this.remove(numberLabel);
             }
         }
+        //==========
     }
     @Override
     public void mouseExited(MouseEvent e){}

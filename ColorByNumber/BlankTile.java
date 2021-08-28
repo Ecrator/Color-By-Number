@@ -34,8 +34,8 @@ public class BlankTile extends JPanel implements MouseListener{
         color=canvas.pallete.colors.get(canvas.selectedPallete).color;
         palleteNumber=canvas.selectedPallete;
         this.setBackground(color);
-        canvas.mouseDown=true;
         //===========
+        canvas.mouseDown=true;
     }
     @Override
     public void mouseReleased(MouseEvent e){
@@ -43,19 +43,29 @@ public class BlankTile extends JPanel implements MouseListener{
     }
     @Override
     public void mouseEntered(MouseEvent e){
+        //highlights panel if it's empty
+        //==========
         if(color==null||color==UIManager.getColor("Panel.background")){
             this.setBackground(Color.YELLOW);
         }
+        //==========
+        //evaluates wether to fill the tile if
+        //the mouse stays down
+        //==========
         if(canvas.mouseDown){
             color=canvas.pallete.colors.get(canvas.selectedPallete).color;
             palleteNumber=canvas.selectedPallete;
             this.setBackground(color);
         }
+        //==========
     }
     @Override
     public void mouseExited(MouseEvent e){
+        //set color to default
+        //==========
         if(color==null||color==UIManager.getColor("Panel.background")){
             this.setBackground(UIManager.getColor("Panel.background"));
         }
+        //==========
     }
 }
