@@ -47,6 +47,13 @@ public class PalleteColor extends JPanel implements MouseListener{
         this.addMouseListener(this);
     }
     //==========
+    //sets the label to the pallete number
+    //==========
+    public void resetLabel(){
+        numberLabel.setText(String.valueOf(palleteNumber));
+    }
+    //==========
+
     @Override
     public void mouseClicked(MouseEvent e){
         //sets the Canvas's selected pallete
@@ -54,8 +61,12 @@ public class PalleteColor extends JPanel implements MouseListener{
         //==========
         if(!blank){
             pallete.canvas.selectedPallete=palleteNumber;
+            pallete.canvas.resetPalleteLabels();
+            numberLabel.setText(palleteNumber+"-[Selected]");
         }else{
             Bpallete.canvas.selectedPallete=palleteNumber;
+            Bpallete.canvas.resetPalleteLabels();
+            numberLabel.setText(palleteNumber+"-[S]");
         }
         //==========
     }

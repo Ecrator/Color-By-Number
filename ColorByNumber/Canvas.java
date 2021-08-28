@@ -51,7 +51,7 @@ public class Canvas extends JFrame implements KeyListener{
             String[] CanvasSize=data.split("#")[1].split(",");
             canvasSize=new int[]{Integer.valueOf(CanvasSize[0]), Integer.valueOf(CanvasSize[0])};
             tiles=new Tile[Integer.valueOf(canvasSize[0])][Integer.valueOf(canvasSize[1])];
-            container.setLayout(new GridLayout(canvasSize[0], canvasSize[1]));
+            container.setLayout(new GridLayout(canvasSize[0], canvasSize[1], 1, 1));
             container.setPreferredSize(new Dimension(800+(canvasSize[0]*30), 800+(canvasSize[1]*30)));
             //==========
             //strips the tile data and creates an array of
@@ -145,6 +145,15 @@ public class Canvas extends JFrame implements KeyListener{
             }
         }
         container.setPreferredSize(size);
+        //==========
+    }
+
+    public void resetPalleteLabels(){
+        //resets the label for each color in the pallete
+        //==========
+        for(PalleteColor color: pallete.colors){
+            color.resetLabel();
+        }
         //==========
     }
 
