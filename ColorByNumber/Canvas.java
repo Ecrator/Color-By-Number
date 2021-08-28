@@ -14,10 +14,12 @@ public class Canvas extends JFrame implements KeyListener{
     Tile[][] tiles;
     int[] canvasSize;
     Thread autoSave;
+    Boolean mouseDown;
     public Canvas(int IfileNumber) throws IOException{
         //Intializes values and components
         //==========
         fileNumber=IfileNumber;
+        mouseDown=false;
         manager=new DataManager();
         container=new JPanel();
         pane=new JScrollPane(container);
