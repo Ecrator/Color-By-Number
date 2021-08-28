@@ -10,9 +10,11 @@ public class LevelEditor extends JPanel implements MouseListener{
     DataManager manager;
     int fileNumber;
     CanvasPreview previewCanvas;
-    public LevelEditor(int IfileNumber) throws IOException{
+    CanvasEditor canvas;
+    public LevelEditor(int IfileNumber, CanvasEditor Icanvas) throws IOException{
         //Initializes values and components
         //==========
+        canvas=Icanvas;
         manager=new DataManager();
         button=new JButton("Edit");
         fileNumber=IfileNumber;
@@ -53,6 +55,7 @@ public class LevelEditor extends JPanel implements MouseListener{
         //with a click listener
         //==========
         loadCanvas();
+        canvas.setVisible(false);
         //==========
     }
     @Override

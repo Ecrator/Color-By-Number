@@ -13,11 +13,13 @@ public class BlankCanvas extends JFrame{
     JPanel container;
     JScrollPane pane;
     String[] canvasData;
+    Boolean mouseDown;
     public BlankCanvas(String Iname, int[] IcanvasSize){
         //initiates components and variables
         //==========
         name=Iname;
         canvasSize=IcanvasSize;
+        mouseDown=false;
         pallete=new BlankPallete(this, false);
         container=new JPanel();
         manager=new DataManager();
@@ -42,6 +44,7 @@ public class BlankCanvas extends JFrame{
         //==========
         name=Iname;
         fileNumber=IfileNumber;
+        mouseDown=false;
         manager=new DataManager();
         canvasData=manager.getData(fileNumber).split("#");
         pallete=new BlankPallete(this, true);

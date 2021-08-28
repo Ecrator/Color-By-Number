@@ -56,12 +56,23 @@ public class Tile extends JPanel implements MouseListener{
             this.setBackground(color);
             this.remove(numberLabel);
         }
+        canvas.mouseDown=true;
         //===========
     }
     @Override
-    public void mouseReleased(MouseEvent e){}
+    public void mouseReleased(MouseEvent e){
+        canvas.mouseDown=false;
+    }
     @Override
-    public void mouseEntered(MouseEvent e){}
+    public void mouseEntered(MouseEvent e){
+        if(canvas.mouseDown){
+            if(canvas.selectedPallete==palleteNumber&& !filled){
+                filled=true;
+                this.setBackground(color);
+                this.remove(numberLabel);
+            }
+        }
+    }
     @Override
     public void mouseExited(MouseEvent e){}
 }

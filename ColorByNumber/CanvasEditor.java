@@ -26,7 +26,7 @@ public class CanvasEditor extends JFrame{
         //to the container
         //==========
         for(int i=0;i<manager.levelAmount;i++){
-            levels.add(new LevelEditor(i));
+            levels.add(new LevelEditor(i, this));
             container.add(levels.get(i));
         }
         //==========
@@ -36,7 +36,7 @@ public class CanvasEditor extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setSize(500,500);
-        this.setTitle("Level Browser");
+        this.setTitle("Level Editor");
         this.add(pane);
         this.setVisible(true);
         //==========
