@@ -21,7 +21,7 @@ public class BlankCanvas extends JFrame{
         pallete=new BlankPallete(this, false);
         container=new JPanel();
         manager=new DataManager();
-        container.setLayout(new GridLayout(canvasSize[0], canvasSize[1]));
+        container.setLayout(new GridLayout(canvasSize[0], canvasSize[1], 1, 1));
         pane=new JScrollPane(container);
         tiles=new BlankTile[canvasSize[0]][canvasSize[1]];
         //==========
@@ -48,7 +48,7 @@ public class BlankCanvas extends JFrame{
         container=new JPanel();
         pane=new JScrollPane(container);
         canvasSize=new int[]{Integer.valueOf(canvasData[1].split(",")[0]), Integer.valueOf(canvasData[1].split(",")[1])};
-        container.setLayout(new GridLayout(canvasSize[0], canvasSize[1]));
+        container.setLayout(new GridLayout(canvasSize[0], canvasSize[1], 1, 1));
         tiles=new BlankTile[canvasSize[0]][canvasSize[1]];
         //==========
         //creates a BlankPallete and gives it the
@@ -133,6 +133,15 @@ public class BlankCanvas extends JFrame{
             }
         }
         return data;
+        //==========
+    }
+
+    public void resetPalleteLabels(){
+        //resets the label for each color in the pallete
+        //==========
+        for(PalleteColor color: pallete.colors){
+            color.resetLabel();
+        }
         //==========
     }
 

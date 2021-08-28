@@ -39,7 +39,15 @@ public class BlankTile extends JPanel implements MouseListener{
     @Override
     public void mouseReleased(MouseEvent e){}
     @Override
-    public void mouseEntered(MouseEvent e){}
+    public void mouseEntered(MouseEvent e){
+        if(color==null||color==UIManager.getColor("Panel.background")){
+            this.setBackground(Color.YELLOW);
+        }
+    }
     @Override
-    public void mouseExited(MouseEvent e){}
+    public void mouseExited(MouseEvent e){
+        if(color==null||color==UIManager.getColor("Panel.background")){
+            this.setBackground(UIManager.getColor("Panel.background"));
+        }
+    }
 }
