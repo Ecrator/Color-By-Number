@@ -237,4 +237,22 @@ public class DataManager {
             System.out.println(x);
         }
     }
+
+    public void deleteCanvas(int fileNumber){
+        //deletes the selected canvas and renames
+        //the canvases after it to keep numerical order
+        //==========
+        try{
+            Files.get(fileNumber).delete();
+            Files.remove(fileNumber);
+            for(int i=fileNumber;i<Files.size();i++){
+                File tempFile=new File("Data\\Canvas"+i+".txt");
+                Files.get(i).renameTo(tempFile);
+            }
+        }catch(Exception x){
+            System.out.println("Failed to delete Canvas!");
+            System.out.println(x);
+        }
+        //==========
+    }
 }
