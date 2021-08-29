@@ -6,7 +6,8 @@ import java.io.IOException;
 public class LevelEditor extends JPanel implements MouseListener{
     String name;
     JLabel nameLabel;
-    JButton button;
+    JButton editButton;
+    JButton deleteButton;
     DataManager manager;
     int fileNumber;
     CanvasPreview previewCanvas;
@@ -16,21 +17,25 @@ public class LevelEditor extends JPanel implements MouseListener{
         //==========
         canvas=Icanvas;
         manager=new DataManager();
-        button=new JButton("Edit");
+        editButton=new JButton("Edit");
+        deleteButton=new JButton("Delete");
         fileNumber=IfileNumber;
         name=manager.getName(fileNumber);
         nameLabel=new JLabel(name);
         this.setBackground(Color.LIGHT_GRAY);
         this.setLayout(null);
-        button.addMouseListener(this);
+        editButton.addMouseListener(this);
+        deleteButton.addMouseListener(this);
         previewCanvas=new CanvasPreview(fileNumber, true);
         //==========
         //Organizes components on the panel
         //==========
         this.add(nameLabel);
         nameLabel.setBounds(40, 20, 500, 50);
-        this.add(button);
-        button.setBounds(40, 90, 100, 40);
+        this.add(editButton);
+        editButton.setBounds(40, 90, 100, 40);
+        this.add(deleteButton);
+        deleteButton.setBounds(40, 140, 100, 40);
         this.add(previewCanvas);
         previewCanvas.setBounds(250, 20, 150,150);
         //==========
@@ -49,13 +54,22 @@ public class LevelEditor extends JPanel implements MouseListener{
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mouseClicked(MouseEvent e){
         //Click listener which loads a canvas
         //object, the JButton is the only object
         //with a click listener
         //==========
-        loadCanvas();
-        canvas.setVisible(false);
+        if(((JButton)e.getSource()).getText().equals("Edit")){
+            loadCanvas();
+            canvas.setVisible(false);
+        }else if(((JButton)e.getSource()).getText().equals("Delete")){
+            manager.deleteCanvas(fileNumber);
+            try{
+                CanvasEditor newEditor=new CanvasEditor();
+                newEditor.setLocation(canvas.getLocation());
+                canvas.setVisible(false);
+            }catch(Exception x){}
+        }
         //==========
     }
     @Override
