@@ -2,6 +2,6 @@ This is a color by number game made entirely from Java and using the Swing libra
 Please comment on functions and divide the code neatly.
 
 [Controls]
-'-' - zoom out
-'=' - zoom in
+'-' - zoom out\n
+'=' - zoom in\n
 's' - manually save
