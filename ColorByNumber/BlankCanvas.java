@@ -114,7 +114,8 @@ public class BlankCanvas extends JFrame{
 
     public String getPalleteData(){
         //returns a string which list the RGB values
-        //of each pallete color
+        //of each pallete color used and changes the pallete
+        //number of the tiles accordingly
         //==========
         String data="";
         for(int i=1;i<pallete.colors.size();i++){
@@ -128,11 +129,13 @@ public class BlankCanvas extends JFrame{
             }else{
                 for(int y=0;y<canvasSize[1];y++){
                     for(int x=0;x<canvasSize[0];x++){
-                        if(tiles[x][y].palleteNumber>i){
+                        if(tiles[x][y].palleteNumber>=i){
                             tiles[x][y].palleteNumber-=1;
                         }
                     }
                 }
+                pallete.colors.remove(i);
+                i-=1;
             }
         }
         return data;

@@ -82,30 +82,46 @@ public class BlankPallete extends JFrame implements MouseListener{
 
     public void addColor(){
         //adds a palleteColor object to the array
-        //and the container
+        //and the container if it doesn't exist
         //==========
-        colors.add(new PalleteColor(previewColor.getBackground(), this, colors.size()));
-        container.removeAll();
-        container.setLayout(new GridLayout((colors.size()/5)+1,colors.size(), 1, 1));
-        for(PalleteColor color: colors){
-            container.add(color);
+        if(newColor(previewColor.getBackground())){
+            colors.add(new PalleteColor(previewColor.getBackground(), this, colors.size()));
+            container.removeAll();
+            container.setLayout(new GridLayout((colors.size()/5)+1,colors.size(), 1, 1));
+            for(PalleteColor color: colors){
+                container.add(color);
+            }
+            container.revalidate();
         }
-        container.revalidate();
         //==========
     }
 
     public void addColor(int r, int g, int b){
         //adds a palleteColor object to the array
-        //and the container
+        //and the container if it doesn't exist
         //==========
         Color Color=new Color(r, g, b);
-        colors.add(new PalleteColor(Color, this, colors.size()));
-        container.removeAll();
-        container.setLayout(new GridLayout((colors.size()/5)+1,colors.size(), 1, 1));
-        for(PalleteColor color: colors){
-            container.add(color);
+        if(newColor(Color)){
+            colors.add(new PalleteColor(Color, this, colors.size()));
+            container.removeAll();
+            container.setLayout(new GridLayout((colors.size()/5)+1,colors.size(), 1, 1));
+            for(PalleteColor color: colors){
+                container.add(color);
+            }
+            container.revalidate();
         }
-        container.revalidate();
+        //==========
+    }
+
+    public Boolean newColor(Color color){
+        //checks to see if the given color already exist
+        //==========
+        for(int i=0;i<colors.size();i++){
+            if(colors.get(i).color==color){
+                return false;
+            }
+        }
+        return true;
         //==========
     }
 
