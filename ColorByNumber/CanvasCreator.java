@@ -48,7 +48,7 @@ public class CanvasCreator extends JFrame implements MouseListener{
         //==========
         try{
             String[] sizeString=sizeField.getText().split(",");
-            int[] canvasSize=new int[]{Integer.valueOf(sizeString[0]), Integer.valueOf(sizeString[1])};
+            int[] canvasSize=new int[]{Integer.valueOf(sizeString[1]), Integer.valueOf(sizeString[0])};
             String name=nameField.getText();
             BlankCanvas canvas=new BlankCanvas(name, canvasSize);
             this.setVisible(false);
