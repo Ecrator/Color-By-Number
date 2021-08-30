@@ -191,7 +191,7 @@ public class DataManager {
             //==========
             writer.close();
         }catch(Exception x){
-            System.out.println("Failed to create canvas!");
+            System.out.println("Failed to overwrite canvas!");
             System.out.println(x);
         }
     }
